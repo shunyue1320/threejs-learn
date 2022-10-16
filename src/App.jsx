@@ -8,12 +8,20 @@ function App() {
     /** 创建场景 */
     const scene = new THREE.Scene();
 
+    // 创建一个立方缓冲几何体
+    const geometry = new THREE.BoxGeometry(100, 100, 100);
+    // 创建材质
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    // 生成带有材质的物体
+    const cube = new THREE.Mesh(geometry, material);
+    // 把物体添加进场景中
+    scene.add(cube);
+
     /** 相机设置 */
     const width = window.innerWidth; //窗口宽度
     const height = window.innerHeight; //窗口高度
     const k = width / height; //窗口宽高比
     const s = 200; //三维场景显示范围控制系数，系数越大，显示的范围越大
-
     //创建相机对象
     const camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
     camera.position.set(400, 200, 300); //设置相机位置
